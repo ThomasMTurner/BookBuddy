@@ -1,0 +1,23 @@
+# Go build artifacts
+*.exe
+*.o
+*.out
+
+# Go test cache
+_test/
+
+# Go dependencies
+# If you're using Go modules, you might not need to include vendor/
+# vendor/
+
+# Editor/IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# Operating system files
+.DS_Store
+Thumbs.db
