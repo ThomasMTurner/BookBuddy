@@ -1,19 +1,21 @@
 package library
 
 import (
-    "fmt"
-    "time"
+    //"fmt"
+    //"time"
+    "go.mongodb.org/mongo-driver/bson/primitive"
 )
+
 
 // Books, genre-classified with the author, title, number of pages and related metadata.
 type Book struct {
-    Pages []Page
-    Author string
-    Title string
-    Metadata PDFMetadata
-    Genre string
-    NumberOfPages int
+    ID            primitive.ObjectID `bson:"_id,omitempty"`
+    Pages         []Page             `bson:"pages"`
+    Author        string             `bson:"author"`
+    Title         string             `bson:"title"`
+    NumberOfPages int                `bson:"number_of_pages"`
 }
+
 
 // Pages, their numbering and contents.
 type Page struct {
@@ -23,21 +25,21 @@ type Page struct {
 
 // Other related metadata not pertinent to the book itself.
 type PDFMetadata struct {
-    Subject     string
-    Keywords    []string
-    CreationDate time.Time
-    ModDate     time.Time
-    Producer    string
-    Creator     string
-    PageCount   int
-    Security    string
-    FilePath string
+    //Subject     string
+    //Keywords    []string
+    //CreationDate time.Time
+    //ModDate     time.Time
+    //Producer    string
+    //Creator     string
+    //PageCount   int
+    //Security    string
+    //FilePath string
 }
 
 
 // Factories for the above types.
-func NewBook(Pages []Page, Author string, Title string, Metadata PDFMetadata, Genre string, NumberOfPages int) Book {
-    return Book{Pages, Author, Title, Metadata, Genre, NumberOfPages}
+func NewBook(Pages []Page, Author string, Title string, NumberOfPages int) Book {
+    return Book{primitive.NewObjectID(), Pages, Author, Title, NumberOfPages}
 }
 
 func NewPage(PageNumber int, Contents string) Page {
@@ -45,18 +47,6 @@ func NewPage(PageNumber int, Contents string) Page {
 }
 
 
-func enterNewBookEntries() {
-    // Parallel goroutines to read out directory files
-
-
-    // Check the database for existing go types which match filePath for directory to check which need to be added.
-
-
-    // Parallel goroutines to readPdfAsBook (similarly named) - pipelining new updates to the database.
-
-
-    // Voila - we have an updated database containing new book entries.
-}
 
 
 

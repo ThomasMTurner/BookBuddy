@@ -21,3 +21,6 @@ _test/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Environment variables
+.env
